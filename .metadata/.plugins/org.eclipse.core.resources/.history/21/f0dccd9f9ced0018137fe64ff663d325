@@ -1,0 +1,12 @@
+/**
+ * 
+ * 装箱的测试用例
+ * @author tangkai
+ *
+ */
+public class InBoxDemo {
+	public static void main(String[] args) {
+		int m = 500;
+		Integer obj = new Integer(m);
+	}
+}

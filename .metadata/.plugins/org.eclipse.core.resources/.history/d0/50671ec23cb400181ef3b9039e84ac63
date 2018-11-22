@@ -1,0 +1,16 @@
+package tk.learnjavaday05.lol;
+
+public class PlayerTest {
+	public static void main(String[] args) {
+		Player player = new Player();
+		player.setAccount("行走的CD");
+		player.setGameId("09平台联通一区");
+		player.setHero("Lion");
+		player.addEquipment("假腿");
+		player.addAssists();
+		player.addKills();
+		player.addKilledsoldiers();
+		
+	}
+	
+}

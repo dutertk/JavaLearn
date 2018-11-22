@@ -1,0 +1,21 @@
+package tk.learnjavaday05.lol;
+
+import java.util.ArrayList;
+
+public class Player {
+	private String account;
+	private String gameId;
+	private String hero;
+	private ArrayList<String> arrayListequipment;
+	private int assists;
+	private int kills;
+	private int killedSoldiers;
+	private float gameScore;
+	private float totalScore;
+	private int heroLevel;
+	
+	public void setAccount(String account) {
+		this.account = account;
+	}
+	
+}

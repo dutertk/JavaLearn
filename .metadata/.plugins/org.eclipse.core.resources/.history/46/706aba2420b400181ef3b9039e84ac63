@@ -1,0 +1,37 @@
+package tk.learnjavaday05.lol;
+
+import java.util.ArrayList;
+
+/*
+ * 玩家的游戏账号（“超神sf”）
+ * 玩家当前游戏局ID
+ * 玩家所使用的英雄角色
+ * 玩家的装备（跳刀、假腿等等）
+ * 玩家当前游戏局的英雄等级
+ * 玩家的助攻
+ * 玩家的杀人
+ * 玩家的补刀
+ * 玩家当前游戏局得分(得分 = 助攻数 * 10 + 人头数 * 20 + 补刀数 * 2 + 装备数 * 5)
+ * 玩家的总得分
+ */
+public class Player {
+	private String account;
+	private String gameId;
+	private String hero;
+	private ArrayList<String> arrayListequipment = new ArrayList<String>();
+	private int assists;
+	private int kills;
+	private int killedSoldiers;
+	private float gameScore;
+	private float totalScore;
+	private int heroLevel;
+
+	public void setAccount(String account) {
+		this.account = account;
+	}
+
+	public void setGameId(String gameId) {
+		this.gameId = gameId;
+	}
+
+}

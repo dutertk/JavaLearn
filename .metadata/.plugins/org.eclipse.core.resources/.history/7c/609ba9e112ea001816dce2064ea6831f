@@ -1,0 +1,28 @@
+package tk.learnjavaday05.hashmapdemo;
+
+import java.util.HashMap;
+import java.util.Set;
+
+
+
+
+/**
+ * HashMap 测试用例
+ * 
+ * @author tangkai
+ *
+ */
+public class HashMapDemo {
+
+	public static void main(String[] args) {
+		// TODO 自动生成的方法存根
+		String[] arrayString = new String[] {"a","b","c","d","b","b","b","f","g","d","e","t"};
+		HashMap<String, String> hashMap = new HashMap<>();
+		//往hashmap里面放数据，不能重复
+		hashMap.put("1", "C罗");
+		hashMap.put("2", "梅西");
+		hashMap.put("3", "内马尔");
+		Set<String> hashSet = hashMap.keySet();
+	}
+
+}

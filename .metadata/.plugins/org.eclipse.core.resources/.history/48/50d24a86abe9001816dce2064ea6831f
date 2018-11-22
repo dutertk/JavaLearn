@@ -1,0 +1,15 @@
+package tk.learnjavaday05.hashmapdemo;
+
+import java.util.HashSet;
+
+/**
+ * HashSet是一个集合数据类型
+ * 一个具体的HashSet可以装入多个数据
+ * @author tangkai
+ *
+ */
+public class HashSetDemo {
+	public static void main(String[] args) {
+		HashSet<String> hashSet = new HashSet<>();
+	}
+}
