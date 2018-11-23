@@ -26,5 +26,8 @@ public class InBoxDemo {
 	System.out.println(string.replace("cd","abhelloworld"));
 	System.out.println(string.substring(0, 4));
 	System.out.println(String.join(",", "Hellow","world"));
+	//dev分支测试
+	String branchName = "dev";
+	System.out.println("Current BranchName is " + branchName);
 	}
 }
