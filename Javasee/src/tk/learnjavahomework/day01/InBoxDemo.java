@@ -29,5 +29,7 @@ public class InBoxDemo {
 	//dev分支测试
 	String branchName = "dev";
 	System.out.println("Current BranchName is " + branchName);
+	//本地分支commit命令测试
+	String cmdName = "commit";
 	}
 }
