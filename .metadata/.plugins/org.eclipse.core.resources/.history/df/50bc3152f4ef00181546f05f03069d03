@@ -1,0 +1,20 @@
+package tk.learnjavaday05.shop;
+
+/**
+ * 自助购物系统
+ * 
+ * @author tangkai
+ *
+ */
+public class ShopMenu {
+	public static void main(String[] args) {
+		// 商品池管理器
+		ProductManagement productManagement = new ProductManagement();
+		
+		//为商品池添加商品（涉及到了静态方法）
+		CreateSomeProducts.create();
+		
+		//购物车管理器
+		
+	}
+}

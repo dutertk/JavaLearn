@@ -1,0 +1,21 @@
+package tk.learnjavaday05.shop;
+/**
+ * 购物车管理
+ * @author tangkai
+ *
+ */
+
+import java.util.ArrayList;
+
+public class CarManagement {
+	private ArrayList<Product> arrayListProductCart = new ArrayList<>();
+	
+	
+	//网购物车添加商品，传入的格式是：product1：1，product2：3，product3:2
+	public void addProduct(String selectedProduct) {
+		String[] products = selectedProduct.split(",");
+		for (String string : products) {
+			
+		}
+	}
+}

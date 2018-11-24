@@ -1,0 +1,43 @@
+package tk.learnjavaday05.shop;
+/**
+ * 购物车管理
+ * @author tangkai
+ *
+ */
+
+import java.util.ArrayList;
+
+public class CartManagement {
+	private ArrayList<Product> arrayListProductCart = new ArrayList<>();
+	
+	
+	//往购物车添加商品，传入的格式是：product1：1，product2：3，product3:2
+	public void addProduct(String selectedProduct,ProductManagement productManagement) {
+		String[] products = selectedProduct.split(",");
+		for (String string : products) {
+			String[] productAndNumbers = string.split(":");
+			Product product = new Product();
+			
+			//根据用户传入的数据进行构造商品			
+			product.setProductId(productAndNumbers[0]);
+			product.setNumber(Integer.parseInt(productAndNumbers[1]));
+			
+			//根据productId补全商品的名称和价格
+			Product productById = productManagement.getProductById(product.getProductId());
+			product.setProductName(productById.getProductName());
+			product.setPrice(productById.getPrice());
+			
+			//构造完以后放入购物车
+			arrayListProductCart.add(product);
+		}
+	}
+	
+	//从购物车移除产品
+	
+	//打印购物车信息
+	public void showCart() {
+		for(Product product : this.arrayListProductCart) {
+			System.out.println(product.toString());
+		}
+	}
+}

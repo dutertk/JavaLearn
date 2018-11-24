@@ -1,0 +1,53 @@
+package tk.learnjavaday05.shop;
+
+import java.util.Scanner;
+
+/**
+ * 自助购物系统
+ * 
+ * @author tangkai
+ *
+ */
+public class ShopMenu {
+	public static void main(String[] args) {
+		// 商品池管理器
+		ProductManagement productManagement = new ProductManagement();
+
+		// 为商品池添加商品（涉及到了静态方法）
+		CreateSomeProducts.create();
+
+		// 购物车管理器
+		CartManagement cartManagement = new CartManagement();
+
+		System.out.println("欢迎来到米兰商城，请选择您要进行的操作~");
+		System.out.println();
+		Scanner scanner = new Scanner(System.in);
+		String command = scanner.nextLine();
+		boolean flag = true;
+		while (flag) {
+			System.out.println();
+			System.out.println();
+			System.out.println("1.浏览商品；2.购物；3.查看购物车；4.修改购物车；5.提交订单；6.付款；7.退出");
+			switch (command) {
+			case "1":
+				productManagement.showProduct();
+				break;
+			case "2":
+				System.out.println("请选择您想要购买的产品，格式如下：product1:1,product2:3");
+				String selectedProduct = scanner.nextLine();
+				cartManagement.addProduct(selectedProduct, productManagement);
+				break;
+			case "3":
+				cartManagement.showCart();
+				break;
+			case "4":
+
+				break;
+			default:
+				flag = false;
+				break;
+			}
+		}
+
+	}
+}

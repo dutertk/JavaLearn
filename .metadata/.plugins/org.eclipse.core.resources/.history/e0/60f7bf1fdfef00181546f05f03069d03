@@ -1,0 +1,19 @@
+package tk.learnjavaday05.shop;
+/**
+ * 1保存所有商品数据
+ * 2提供操作这些数据的方法
+ * @author tangkai
+ *
+ */
+
+import java.util.ArrayList;
+
+public class ProductManagement {
+	ArrayList<Product> arrayListProduct = new ArrayList<>();
+	
+	
+	private void addProduct(Product product) {
+		// 添加商品的方法
+		arrayListProduct.add(product);
+	}
+}

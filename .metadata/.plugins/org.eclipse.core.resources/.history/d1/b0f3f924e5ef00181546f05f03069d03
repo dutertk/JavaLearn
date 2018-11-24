@@ -1,0 +1,12 @@
+package tk.learnjavaday05.shop;
+/**
+ * 自助购物系统
+ * @author tangkai
+ *
+ */
+public class ShopMenu {
+	public static void main(String[] args) {
+	ProductManagement productManagement = new ProductManagement();
+	
+	}
+}
