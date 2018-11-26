@@ -1,0 +1,11 @@
+package tk.learnjavaday06.interfacedemo;
+/**
+ * 接口只提供方法的定义，不实现方法
+ * 接口不能实例化
+ * @author tangkai
+ *
+ */
+public interface XXService {
+	public String step1();
+	public String step2();
+}

@@ -1,0 +1,5 @@
+package tk.learnjavaday06.interfacedemo;
+
+public interface UserDao {
+
+}

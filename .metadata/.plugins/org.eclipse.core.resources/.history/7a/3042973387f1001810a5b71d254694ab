@@ -1,0 +1,28 @@
+package tk.learnjavaday06.interfacedemo;
+
+public class UserManageImplement implements UserManage {
+
+	@Override
+	public boolean login(String name, String password) {
+		// TODO 自动生成的方法存根
+		//调用DAO层的接口根据用户名查询是否存在一个用户对象
+		UserDao userDao = null;
+		User user = userDao.findUserByName(name);
+		if (user == null) {
+			return false;
+		}
+		if (user.getPassword() == password) {
+			return true;
+		}
+			
+			
+		return false;
+	}
+
+	@Override
+	public String registrate(String name, String passwordone, String password2) {
+		// TODO 自动生成的方法存根
+		return null;
+	}
+
+}
