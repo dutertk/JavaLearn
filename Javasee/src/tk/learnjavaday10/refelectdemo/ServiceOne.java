@@ -6,6 +6,7 @@ public class ServiceOne implements Service{
 	public void say() {
 		System.out.println("This is One!");
 		
+		
 	}
 
 }
