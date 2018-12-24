@@ -1,4 +1,4 @@
-package Day01;
+package day01;
 /**
  * 
  * 装箱的测试用例

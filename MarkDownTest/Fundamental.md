@@ -61,7 +61,7 @@ int[] intArray = new int[4];
 1. JDK：Java Developper Kit,开发者工具套装，包含完整的JRE和JAVA运行环境。
 2. JRE：Java Runtime Environment，运行java程序的，针对普通用户。
 3. JVM：将字节码即.class文件转换成特定机器代码，提供内存管理和垃圾回收（GC）和安全机制等。独立于硬件和操作系统，因此说java语言具有跨平台性。
-###五、对象与类
+### 五、对象与类
 java是完全面向对象的语言，必须熟悉OOP才能编写java程序。  
 **5.1 类**   
 类：对象的模板或者蓝图，而由类构造对象的过程称为创建类的实例。
