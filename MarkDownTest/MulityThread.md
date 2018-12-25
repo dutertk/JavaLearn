@@ -79,4 +79,96 @@ System.out.println(Thread.currentThread().getName() +
 使用Runnable接口实现多线程的好处：   
 1. 适合多个相同程序代码的线程去处理同一资源的情况（售票的例子）  
 2. 避免java的单继承特性带来的局限性   
-3. 代码能被多个线程共享，与数据是独立的。
+3. 代码能被多个线程共享，与数据是独立的。  
+
+### 四、多线程的同步
+以下面售票的例子来说明多线程的同步
+```
+
+package day03;
+
+/**
+ * 
+ * 多线程售票
+ * 
+ * @author tangkai
+ *
+ */
+
+public class SaleTickets {
+    public static void main(String[] args) {
+        Tickets tickets = new Tickets();
+
+        new Thread(tickets).start();
+        new Thread(tickets).start();
+        new Thread(tickets).start();
+        new Thread(tickets).start();
+
+    }
+
+}
+
+class Tickets implements Runnable {
+    private int ticket = 100;
+    // 修改当前的售票类
+    String str = "";
+
+    public void run() {
+
+        while (true) {
+            /**
+             * 为了解决线程同步的问题，即保证线程安全（代码的原子性） 将需要具有原子性的代码，放入synchronized语句，形成同步代码块
+             */
+            synchronized (str) {
+
+                // 在这段代码中会出现同一张票号被打印出多次甚至出现负数的票号
+                if (ticket > 0) {
+                    try {
+                        /**
+                         * 线程执行到该处后会暂停执行，让出cpu给别的线程 在指定的时间以后，cpu会回到刚才暂停的线程上继续执行。 这里就看到了重复的票号
+                         */
+                        Thread.sleep(10);
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
+                    }
+                    System.out.println(Thread.currentThread().getName() + " is selling tickets " + ticket--);
+                }
+            }
+        }
+    }
+
+}
+
+
+```
+
+在未将tickets类run()方法中的代码放到synchronized语句之前，，假设ticket为1的时候，线程1刚执行完if语句，就在这时，操作系统将cpu切换到了线程2执行，此时ticket的值仍为1，线程2执行完后面的代码以后，ticket的值变为0了，cpu又切换到线程1上执行，此时ticket值已经为0，故打出的值为0.  
+这就涉及到了**线程同步**：即程序中不能有多个线程同时在执行同一部分代码。
+
+将需要具有原子性的代码，放入synchronized语句，保证了在同一时刻只能有一个线程可以进入到同步代码块内运行，只有当该线程离开后，其他线程才能进入。   
+
+此外，可以在函数定义前使用synchronized关键字也可以很好的实现线程之间的同步。   
+
+```
+public synchronized void run() {
+......
+}
+```
+**注：要实现代码块与函数之间的同步，可以将synchronized的监视器对象设置为this对象。**
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
