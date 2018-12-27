@@ -149,13 +149,59 @@ class Tickets implements Runnable {
 
 此外，可以在函数定义前使用synchronized关键字也可以很好的实现线程之间的同步。   
 
-```
-public synchronized void run() {
-......
-}
-```
+
+    public synchronized void run() {
+    ......
+     }
+
 **注：要实现代码块与函数之间的同步，可以将synchronized的监视器对象设置为this对象。**
 
+
+**补充监视器一些知识**：当线程执行到synchronized的时候检查传入的实参对象，并得到该对象的锁旗标，即下面的bflag也就是对象的标志位，该标志位只有0和1两种状态。如果得不到，此线程就会被加入到一个与该对象的锁旗标相关联的等待线程池中，一直到该对象的锁旗标被归还。一个用于synchronized语句中的对象称为一个监视器，在一个时间段内，只能有一个线程可以锁定监视器。其他的线程在试图进入已被锁定的监视器时都将被挂起，直到锁定了监视器的线程执行完synchronized语句中的代码块。
+
+### 五、线程间的通信  
+**问题的引出**  
+有一个数据存储空间用来存储姓名和性别，应用包含两个线程，一个是添加数据（生产者），另一个是取出数据（消费者）。这就会容易产生问题，即生产者只放入了姓名，消费者就取了，这个时候性别就会取的有问题。  
+**问题的解决**  
+直接放代码
+	
+	public class Person {
+	  private String name;
+	  private String sex;
+	  boolean bFlag = false;
+	  public synchronized void put(String name, String sex) throws Exception{
+		if (bFlag) 
+           //特别注意：如果条件语句的代码块中只有一句话，就可以省略大括号了！！
+			//这里就是相当于{wait()}
+			wait();
+			this.name = name;
+			this.sex = sex;
+			bFlag = true;
+			notify();
+	}
+
+	
+	public synchronized void get() throws Exception {
+		if (!bFlag) 
+			//特别注意：如果条件语句的代码块中只有一句话，就可以省略大括号了！！
+			//这里就是相当于{wait()}
+			wait();
+			System.out.println(this.name + "-->>" + this.sex);
+			bFlag = false;
+			notify();
+		
+		
+	}
+	
+}
+
+
+java是通过Object类的**wait**、**notify**、**notifyAll** 这几个方法来实现线程间的通信的，由于是从Object继承的，因此在任何类中都可以直接使用这些方法。说明：  
+1. wait：告诉当前线程放弃监视器并进入睡眠状态，直到其他线程进入同一监视器并调用notify
+为止。  
+2. notify: 唤醒同一对象监视器中调用wait的第一个线程。用于类似饭馆有一个空位后通知所有等候就餐的顾客中的第一位可以入座的情况。  
+3. notifyAll:唤醒同意对象监视器中调用wait的所有线程，具有最高优先级的线程首先被唤醒并执行。用于类似培训班招生满额后，通知所有学员来上课的情况。  
+**注意：**以上三个方法只能在synchronized方法中调用，无论线程调用一个对象的wait还是notify，必须先得到该对象的锁旗标。
 
 
 
