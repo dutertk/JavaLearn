@@ -37,7 +37,7 @@
 
    算法分为标记和清除两个阶段：首先标记出所有要回收的对象，在标记完成后统一回收所有被标记的对象。存在的不足有两个，一个是效率问题，一个是空间问题。这种算法会产生大量不连续的空间碎片，这会导致以后在程序运行过程中需要分配较大对象时，无法找到足够的连续内存。
 
-   ![1](/Users/tangkai/Desktop/1.jpeg)
+   ![1](https://github.com/dutertk/Images/blob/master/1.jpeg?raw=trueç)
 
    2. 复制算法
 
@@ -45,19 +45,19 @@
 
    现在的商业虚拟机都使用这种算法来回收新生代，将内存分为一块较大的Eden空间和两块较小的Survivor空间，每次使用Eden和其中一块Survivor。当回收时，将Eden和Survivor中还存活着的对象一次性地复制到另外一块Survivor空间上，最后清理掉Eden和刚才用过的Survivor空间。HotSpot虚拟机默认Eden和Survivor的大小比例是8：1.
 
-   ![WechatIMG2](/Users/tangkai/Desktop/WechatIMG2.jpeg)
+   ![WechatIMG2](https://github.com/dutertk/Images/blob/master/WechatIMG2.jpeg?raw=true)
 
    3. 标记-整理算法
 
    根据老年代的特点，使用标记-整理算法进行垃圾收集，标记过程同第一种一样，但是后续步骤不是直接对可回收对象进行清理，而是将所有存活的对象向一端移动，然后直接清理掉端边界以外的内存。示意图如下：
 
-   ![WechatIMG1](/Users/tangkai/Desktop/WechatIMG1.jpeg)
+   ![WechatIMG1](https://github.com/dutertk/Images/blob/master/WechatIMG1.jpeg?raw=true)
 
    **注：**第一次使用Typora上传图片，看看效果吧。
 
 5. **垃圾收集器**
 
-1. Serial收集器
+6. Serial收集器
 
 单线程收集器，但是“单线程”并不仅仅意味着只会使用一个CPU或一条收集线程去完成垃圾收集，更重要的是在进行垃圾收集时，必须暂停其他所有的工作线程，直到它收集结束。
 
