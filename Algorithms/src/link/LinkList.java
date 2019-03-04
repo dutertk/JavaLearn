@@ -21,7 +21,8 @@ public class LinkList {
 			System.out.println(current.getData());
 			current = current.getNext();
 		}
-		
 	}
+	
+	//插入到指定位置
 
 }
