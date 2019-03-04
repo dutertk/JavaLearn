@@ -30,7 +30,7 @@
 - -R(recursive) &nbsp;递归显示当前目录下所有目录
 - -r &nbsp; 逆序排序；
 - -t &nbsp; 按修改时间排序   
-其中ll 相当于  ls &nbsp;-l  
+  其中ll 相当于  ls &nbsp;-l  
 
 <font size="4em">3. **touch**</font>  
 作用：创建空文件或者更新已存在的文件的时间   
@@ -67,10 +67,10 @@ touch {a.txt, b.txt}
 语法：find &nbsp;路径 &nbsp;匹配条件  
 
 - -name 按照名称查找   
-举例：find&nbsp;/etc&nbsp;-name&nbsp;"init"
+  举例：find&nbsp;/etc&nbsp;-name&nbsp;"init"
 - -size 按照文件大小查找  
-以block为单位，一个block是512B，1K是2个block  +大于 &nbsp; -小于  
-举例：find&nbsp;/etc&nbsp;-size&nbsp;-204800
+  以block为单位，一个block是512B，1K是2个block  +大于 &nbsp; -小于  
+  举例：find&nbsp;/etc&nbsp;-size&nbsp;-204800
 
 <font size="4em">8. **tar**</font>  
 英文：<font color="red">tar</font>   
@@ -94,4 +94,6 @@ touch {a.txt, b.txt}
 - -r&nbsp;重启  
 
 举例：shutdown&nbsp;-h&nbsp;now  
-　　　reboot&nbsp;-h&nbsp;now
+　　　reboot -h now
+
+### 
