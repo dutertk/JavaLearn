@@ -8,24 +8,21 @@ import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
-public class JobSubmitter {
-	public static void main(String[] args) throws Exception{
-		//在代码中设置jvm系统参数，用于给job对象来获取hdfs的用户身份
-		System.setProperty("HADOOP_USER_NAME", "root");
+public class JobSubmitterOnLinux {
+	
+	public static void main(String[] args) throws Exception {
 		
 		Configuration conf = new Configuration();
-		//设置job运行时要访问的默认文件系统
-		conf.set("fs.defaultFS", "hdfs://192.168.141.4:9000/");
 		
 		//设置job提交到哪里运行
-		conf.set("mapreduce.framework.name", "yarn");
-		conf.set("yarn.resourcemanager.hostname", "Master");
-		conf.set("mapreduce.app-submission.cross-platform", "true");
+//		conf.set("mapreduce.framework.name", "yarn");
+//		conf.set("yarn.resourcemanager.hostname", "Master");
+//		conf.set("mapreduce.app-submission.cross-platform", "true");
 		
 		Job job = Job.getInstance(conf);
 		
 		//jar包的位置根据正在运行的类，判断jar包的位置
-		job.setJarByClass(JobSubmitter.class);
+		job.setJarByClass(JobSubmitterOnLinux.class);
 		//也可以写到具体位置
 		//job.setJar("jar包地址");
 		
@@ -47,9 +44,9 @@ public class JobSubmitter {
 		//想要启动的reduce task的数量（默认为1）
 		
 		job.setNumReduceTasks(2);
-		job.waitForCompletion(true);
 		
+		boolean res = job.waitForCompletion(true);
+		System.exit(res?0:1);
 		
 	}
-
 }
